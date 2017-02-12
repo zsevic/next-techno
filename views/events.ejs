@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <title>Next Techno</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="style.css">
+    <style>
+        body        { padding-top:80px; word-wrap:break-word; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-music"></span> Next techno events in Belgrade</h1>
+        <a href="/logout" class="btn btn-danger btn-md">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- EVENTS -->
+		<% for(var i=0;i<result.length;i++){ 
+		var datetime=new Date(Date.parse(result[i].start_time));
+		var year=datetime.getFullYear();
+		var month=datetime.getMonth()+1;
+		var day=datetime.getDate();
+		var hours=datetime.getHours();
+		var minutes=datetime.getMinutes();
+		%>
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="well">
+            	<p><strong>event</strong>: <a href="https://facebook.com/events/<%= result[i].id %>"><%= result[i].name %></a></p>
+				<p><strong>place</strong>: <%= result[i].place.name %></p>
+				<p><strong>date</strong>: <%= day+"."+month+"."+year+"." %></p>
+				<p><strong>start time</strong>: <%= hours + ":" + (minutes<10 ? "0"+minutes : minutes) + "h" %></p>
+            </div>
+        </div>
+		<% } %>
+    </div>
+
+</div>
+</body>
+</html>
