@@ -11,10 +11,13 @@ module.exports=function(app,passport){
 		var token=req.user.facebook.token;
 		var Page=require("./models/page");
 		Page.find({},function(err,docs){
-			require("../nextTechno")(docs[1],token,function(err,result){
-			if(err)
-				throw err;
-			res.render('events.ejs',{user:req.user,result:result});
+			require("../nextTechno")(docs,token,function(err,result){
+				if(err)
+					throw err;
+				result.sort(function(a,b){
+					return (new Date(a.start_time))-(new Date(b.start_time));
+				});
+				res.render('events.ejs',{user:req.user,result:result});
 			});
 		});
 	});

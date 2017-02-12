@@ -1,9 +1,10 @@
 module.exports=function(pages,token,done){
-	var request=require("request");
-	var access="https://graph.facebook.com/v2.8/"+pages.id+"/events?access_token="+token;
 	var arr=[];
 	var today=Date.now();
-	var giveMeData=function(access){
+	var async=require("async");
+	var request=require("request");
+	var giveMeData=function(page,cb){
+		var access="https://graph.facebook.com/v2.8/"+page.id+"/events?access_token="+token;
 		request(access,function(error,response,body){
 			if(!error && response.statusCode===200){
 				var res=JSON.parse(body).data;
@@ -12,11 +13,16 @@ module.exports=function(pages,token,done){
 					if(today>datetime) break;
 					else arr.push(res[i]);
 				}
-				return done(null,arr);
+				return cb(null);
 			}else{
-				done(error);
+				cb(error);
 			}
 		});
-	};
-	giveMeData(access);
+	}
+	async.each(pages,giveMeData,function(err){
+		if(err) 
+			done(err);
+		done(null,arr);
+		console.log("everything went okay!");
+	});
 };
