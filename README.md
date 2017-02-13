@@ -1,7 +1,7 @@
 Next Techno
 ===
 
-An app that shows next techno events in Belgrade
+An app that shows upcoming techno events in Belgrade
 ---
 
 ### User stories:
