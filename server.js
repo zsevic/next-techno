@@ -9,7 +9,7 @@ var request=require("request");
 var morgan=require("morgan");
 var bodyParser=require("body-parser");
 var cookieParser=require("cookie-parser");
-var session=require("express-session");
+var cookieSession=require("cookie-session");
 
 var configDB=require("./config/database");
 mongoose.connect(configDB.url);
@@ -26,10 +26,10 @@ app.set('view engine', 'ejs');
 
 require("./config/passport")(passport);
 
-app.use(session({
-	secret:"spontaneouscat",
-	resave:false,
-	saveUninitialized:true
+app.use(cookieSession({
+	name:'session',
+	keys:['spontaneouscat'],
+	maxAge:24*60*60*1000
 }));
 app.use(passport.initialize());
 app.use(passport.session());
