@@ -1,5 +1,6 @@
 module.exports=function(pages,token,done){
 	var arr=[];
+	var ids=[];
 	var today=Date.now();
 	var async=require("async");
 	var request=require("request");
@@ -10,8 +11,14 @@ module.exports=function(pages,token,done){
 				var res=JSON.parse(body).data;
 				for(var i=0;i<res.length;i++){
 					var datetime=new Date(Date.parse(res[i].start_time));
-					if(today>datetime) break;
-					else arr.push(res[i]);
+					if(today>datetime){
+						break;
+					}else if(ids.indexOf(res[i].id)>-1){
+						continue;
+					}else{
+						ids.push(res[i].id);
+						arr.push(res[i]);
+					}
 				}
 				return cb(null);
 			}else{
