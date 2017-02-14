@@ -1,4 +1,4 @@
-Next Techno
+Nextechno
 ===
 
 An app that shows upcoming techno events in Belgrade
