@@ -26,6 +26,7 @@ passport.use(new FacebookStrategy({
                    	newUser.facebook.token = accessToken;                    
                     newUser.facebook.name  = profile.displayName;
                     newUser.facebook.email = profile.emails[0].value;
+                    newUser.facebook.lastUpdated=Date.now();
                     newUser.save(function(err) {
                         if (err)
                             throw err;

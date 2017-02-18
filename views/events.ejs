@@ -20,7 +20,7 @@
     <div class="row">
 
         <!-- EVENTS -->
-		<% for(var i=0;i<result.length;i++){ 
+		<% for(var i=0;i<result.length;i++){
 		var datetime=new Date(Date.parse(result[i].start_time));
 		var year=datetime.getFullYear();
 		var month=datetime.getMonth()+1;
@@ -30,8 +30,8 @@
 		%>
         <div class="col-sm-6 col-sm-offset-3">
             <div class="well">
-            	<p><strong>event</strong>: <a href="https://facebook.com/events/<%= result[i].id %>"><%= result[i].name %></a></p>
-				<p><strong>place</strong>: <%= result[i].place.name %></p>
+            	<p><strong>event</strong>: <a href="https://facebook.com/events/<%= result[i].id %>"><%= result[i].event %></a></p>
+				<p><strong>place</strong>: <%= result[i].place %></p>
 				<p><strong>date</strong>: <%= day+"."+month+"."+year+"." %></p>
 				<p><strong>start time</strong>: <%= hours + ":" + (minutes<10 ? "0"+minutes : minutes) + "h" %></p>
             </div>
