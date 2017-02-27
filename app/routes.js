@@ -18,16 +18,16 @@ module.exports=function(app,passport){
 			User.update({'facebook.id':user.facebook.id},{$set:{
 				'facebook.lastUpdated':new Date()
 			}}).then(function(){
-				Event.remove({});
-			}).then(function(){
-				Page.find({},function(err,docs){
-					require("../nextTechno")(docs,token,function(err,result){
-						if(err)
-							throw err;
-						result.sort(function(a,b){
-							return (new Date(a.start_time))-(new Date(b.start_time));
+				Event.remove({}).then(function(){
+					Page.find({},function(err,docs){
+						require("../nextTechno")(docs,token,function(err,result){
+							if(err)
+								throw err;
+							result.sort(function(a,b){
+								return (new Date(a.start_time))-(new Date(b.start_time));
+							});
+							res.render('events.ejs',{user:req.user,result:result});
 						});
-						res.render('events.ejs',{user:req.user,result:result});
 					});
 				});
 			});
