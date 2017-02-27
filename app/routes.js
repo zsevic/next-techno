@@ -12,12 +12,13 @@ module.exports=function(app,passport){
 		var user=req.user;
 		var User=require("./models/user");
 		var Event=require("./models/event");
+		var Page=require("./models/page");
 		var lastUpdate=Date.now()-(new Date(user.facebook.lastUpdated));
 		if(lastUpdate<3600000){
 			User.update({'facebook.id':user.facebook.id},{$set:{
 				'facebook.lastUpdated':Date.now()
 			}});
-			var Page=require("./models/page");
+			Event.remove();
 			Page.find({},function(err,docs){
 				require("../nextTechno")(docs,token,function(err,result){
 					if(err)

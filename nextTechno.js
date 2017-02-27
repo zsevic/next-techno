@@ -6,9 +6,9 @@ module.exports=function(pages,token,done){
 	var arr=[];
 	var ids=[];
 	var today=Date.now();
-	Event.remove(function(res){
+	/*Event.remove(function(res){
 		console.log(res);
-	});
+	});*/
 	var giveMeData=function(page,cb){
 		var access="https://graph.facebook.com/v2.8/"+page.id+"/events?access_token="+token;
 		request(access,function(error,response,body){
