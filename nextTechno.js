@@ -1,12 +1,11 @@
+var mongoose=require("mongoose");
+var Event=require("./app/models/event");
+var async=require("async");
+var request=require("request");
 module.exports=function(pages,token,done){	
 	var arr=[];
 	var ids=[];
 	var today=Date.now();
-	var mongoose=require("mongoose");
-	var Event=require("./app/models/event");
-	var async=require("async");
-	var request=require("request");
-	Event.remove();
 	var giveMeData=function(page,cb){
 		var access="https://graph.facebook.com/v2.8/"+page.id+"/events?access_token="+token;
 		request(access,function(error,response,body){
