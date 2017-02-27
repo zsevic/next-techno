@@ -16,7 +16,7 @@ module.exports=function(app,passport){
 		var lastUpdate=Date.now()-(new Date(user.facebook.lastUpdated));
 		if(lastUpdate<3600000){
 			User.update({'facebook.id':user.facebook.id},{$set:{
-				'facebook.lastUpdated':Date.now()
+				'facebook.lastUpdated':new Date()
 			}});
 			Event.remove({});
 			Page.find({},function(err,docs){
