@@ -18,7 +18,9 @@ module.exports=function(app,passport){
 		if(lastUpdate<3600000){
 			User.update({'facebook.id':user.facebook.id},{$set:{
 				'facebook.lastUpdated':Date.now()
-			}});
+			}},function(res){
+				console.log(res);
+			});
 			Event.remove();
 			Page.find({},function(err,docs){
 				require("../nextTechno")(docs,token,function(err,result){
