@@ -17,10 +17,8 @@ module.exports=function(app,passport){
 		if(lastUpdate<3600000){
 			User.update({'facebook.id':user.facebook.id},{$set:{
 				'facebook.lastUpdated':Date.now()
-			}},function(res){
-				console.log(res);
-			});
-			Event.remove();
+			}});
+			Event.remove({});
 			Page.find({},function(err,docs){
 				require("../nextTechno")(docs,token,function(err,result){
 					if(err)
@@ -32,8 +30,19 @@ module.exports=function(app,passport){
 				});
 			});
 		}else{
+			var arr=[];
+			var ids=[];
 			Event.find({},function(err,docs){
-				var result=docs.sort(function(a,b){
+				for(var i=0;i<docs.length;i++){
+					if(ids.indexOf(docs[i].id)>-1){
+						continue;
+					}else{
+						ids.push(res[i].id);
+						var temp={event:res[i].name,place:res[i].place.name,start_time:res[i].start_time};
+						arr.push(temp);
+					}
+				}
+				var result=arr.sort(function(a,b){
 						return (new Date(a.start_time))-(new Date(b.start_time));
 				});
 				res.render('events.ejs',{user:req.user,result:result});
