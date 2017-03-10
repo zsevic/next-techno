@@ -19,7 +19,7 @@ module.exports=function(pages,token,done){
 						continue;
 					}else{
 						ids.push(res[i].id);
-						var temp={event:res[i].name,place:res[i].place.name,start_time:res[i].start_time};
+						var temp={eventId:res[i].id,event:res[i].name,place:res[i].place.name,start_time:res[i].start_time};
 						arr.push(temp);
 						var newEvent=new Event(temp);
 						newEvent.save();

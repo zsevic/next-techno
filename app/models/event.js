@@ -1,7 +1,8 @@
 var mongoose=require("mongoose");
 
 var eventSchema=mongoose.Schema({
-	event:String,
+	eventId:String,
+    event:String,
 	place:String,
 	start_time:String
 });
