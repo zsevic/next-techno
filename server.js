@@ -12,7 +12,7 @@ var cookieParser=require("cookie-parser");
 var cookieSession=require("cookie-session");
 
 var configDB=require("./config/database");
-mongoose.connect(configDB.url);
+mongoose.connect(configDB.url,{useMongoClient:true});
 mongoose.Promise=require("bluebird");
 
 app.use(morgan('dev'));
