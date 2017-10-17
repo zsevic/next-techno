@@ -20,7 +20,9 @@
 			var year=datetime.getFullYear();
 			var month=datetime.getMonth()+1;
 			var day=datetime.getDate();
-			var hours=datetime.getHours()+2;
+            var hours= month<11 ? 
+                (datetime.getHours()+2===24 ? 0 : datetime.getHours()+2) 
+                : datetime.getHours()+1;
 			var minutes=datetime.getMinutes();
 		 %>
 			<div class="card">
