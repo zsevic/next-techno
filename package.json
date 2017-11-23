@@ -5,15 +5,12 @@
   "scripts": {
     "start": "node server.js"
   },
-  "engines":{
-    "node":"6.11.1"
+  "engines": {
+    "node": "6.11.1"
   },
   "dependencies": {
     "async": "^2.1.4",
-    "bcrypt-nodejs": "0.0.3",
-    "bluebird": "^3.4.7",
     "body-parser": "^1.15.2",
-    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "cookie-session": "^2.0.0-alpha.3",
     "ejs": "^2.5.5",

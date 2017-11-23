@@ -1,14 +1,13 @@
-var mongoose=require("mongoose");
-var bcrypt=require("bcrypt-nodejs");
+const mongoose = require('mongoose')
 
-var userSchema=mongoose.Schema({
-	facebook:{
-		id:String,
-		token:String,
-		email:String,
-		name:String,
-		lastUpdated:Date
-	}
-});
+const userSchema = mongoose.Schema({
+  facebook: {
+    id: String,
+    token: String,
+    email: String,
+    name: String,
+    lastUpdated: Date
+  }
+})
 
-module.exports=mongoose.model('User',userSchema);
+module.exports = mongoose.model('User', userSchema)
