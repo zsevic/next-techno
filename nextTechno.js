@@ -2,6 +2,19 @@ const Event = require('./app/models/event')
 const async = require('async')
 const request = require('request')
 
+function registerEvent (ids, res, arr) {
+  ids.push(res.id)
+  let temp = {
+    eventId: res.id,
+    event: res.name,
+    place: res.place === undefined ? 'N/A' : res.place.name,
+    start_time: res.start_time
+  }
+  arr.push(temp)
+  let newEvent = new Event(temp)
+  newEvent.save()
+}
+
 module.exports = (pages, token, done) => {
   const arr = []
   const ids = []
@@ -12,22 +25,22 @@ module.exports = (pages, token, done) => {
       if (!error && response.statusCode === 200) {
         const res = JSON.parse(body).data
         for (let i = 0; i < res.length; i++) {
-          let datetime = Date.parse(res[i].start_time)
-          if (today > datetime) {
-            break
-          } else if (ids.indexOf(res[i].id) > -1) {
+          let startTime = Date.parse(res[i].start_time)
+          if (ids.indexOf(res[i].id) > -1) {
             continue
-          } else {
-            ids.push(res[i].id)
-            let temp = {
-              eventId: res[i].id,
-              event: res[i].name,
-              place: res[i].place === undefined ? 'N/A' : res[i].place.name,
-              start_time: res[i].start_time
+          } else if (today > startTime) {
+            if (res[i].end_time) {
+              let endTime = Date.parse(res[i].end_time)
+              if (today < endTime) {
+                registerEvent(ids, res[i], arr)
+              } else {
+                break
+              }
+            } else {
+              break
             }
-            arr.push(temp)
-            let newEvent = new Event(temp)
-            newEvent.save()
+          } else {
+            registerEvent(ids, res[i], arr)
           }
         }
         return cb(null)

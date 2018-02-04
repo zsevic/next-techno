@@ -16,9 +16,11 @@ module.exports = (app, passport) => {
     const user = req.user
     let lastUpdate = Date.now() - (new Date(user.facebook.lastUpdated))
     if (lastUpdate > 3600000) {
-      User.update({'facebook.id': user.facebook.id}, {$set: {
-        'facebook.lastUpdated': new Date()
-      }}).then(() => {
+      User.update({ 'facebook.id': user.facebook.id }, {
+        $set: {
+          'facebook.lastUpdated': new Date()
+        }
+      }).then(() => {
         Event.remove({}).then(() => {
           Page.find({}, (err, docs) => {
             if (err) res.status(500).end()
@@ -27,7 +29,7 @@ module.exports = (app, passport) => {
               result.sort((a, b) => {
                 return (new Date(a.start_time)) - (new Date(b.start_time))
               })
-              res.render('events.ejs', {user: req.user, result})
+              res.render('events.ejs', { user: req.user, result })
             })
           })
         })
@@ -38,12 +40,12 @@ module.exports = (app, passport) => {
         const result = docs.sort((a, b) => {
           return (new Date(a.start_time)) - (new Date(b.start_time))
         })
-        res.render('events.ejs', {user: req.user, result})
+        res.render('events.ejs', { user: req.user, result })
       })
     }
   })
 
-  app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}))
+  app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }))
 
   app.get('/auth/facebook/callback', passport.authenticate('facebook', {
     successRedirect: '/profile',
