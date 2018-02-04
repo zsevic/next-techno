@@ -1,39 +1,55 @@
 <!doctype html>
 <html>
+
 <head>
-    <title>Nextechno</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Nextechno</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header class="hero-unit" id="banner">
-        <div class="container">
-            <h1><span class="fa fa-volume-up"></span> Nextechno</h1>
-            <p class="lead">Upcoming techno events in Belgrade</p>
-            <a href="/logout" class="btn btn-danger btn-md">Logout</a>
-        </div>
-    </header>
+	<header class="hero-unit" id="banner">
+		<div class="container">
+			<h1>
+				<span class="fa fa-volume-up"></span> Nextechno</h1>
+			<p class="lead">Upcoming techno events in Belgrade</p>
+			<a href="/logout" class="btn btn-danger btn-md">Logout</a>
+		</div>
+	</header>
 	<section class="card-columns items">
-        <% for(var i=0;i<result.length;i++){
+		<% for(var i=0;i<result.length;i++){
 			var datetime=new Date(Date.parse(result[i].start_time));
 			var year=datetime.getFullYear();
 			var month=datetime.getMonth()+1;
 			var day=datetime.getDate();
-            var hours= month<11 ? 
-                (datetime.getHours()+2===24 ? 0 : datetime.getHours()+2) 
-                : datetime.getHours()+1;
+            var hours= datetime.getHours()==24 ? 0 : datetime.getHours()
 			var minutes=datetime.getMinutes();
 		 %>
 			<div class="card">
 				<div class="card-block">
-					<p><strong>event</strong>: <a href="https://facebook.com/events/<%= result[i].eventId %>"><%= result[i].event %></a></p>
-					<p><strong>place</strong>: <%= result[i].place %></p>
-					<p><strong>date</strong>: <%= day+"."+month+"."+year+"." %></p>
-					<p><strong>start time</strong>: <%= hours + ":" + (minutes<10 ? "0"+minutes : minutes) + "h" %></p>
+					<p>
+						<strong>event</strong>:
+						<a href="https://facebook.com/events/<%= result[i].eventId %>">
+							<%= result[i].event %>
+						</a>
+					</p>
+					<p>
+						<strong>place</strong>:
+						<%= result[i].place %>
+					</p>
+					<p>
+						<strong>date</strong>:
+						<%= day+"."+month+"."+year+"." %>
+					</p>
+					<p>
+						<strong>start time</strong>:
+						<%= hours + ":" + (minutes<10 ? "0"+minutes : minutes) + "h" %>
+					</p>
 				</div>
 			</div>
-		<% } %>
+			<% } %>
 	</section>
 </body>
+
 </html>
