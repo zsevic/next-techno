@@ -29,13 +29,8 @@ module.exports = (pages, token, done) => {
           if (ids.indexOf(res[i].id) > -1) {
             continue
           } else if (today > startTime) {
-            if (res[i].end_time) {
-              let endTime = Date.parse(res[i].end_time)
-              if (today < endTime) {
-                registerEvent(ids, res[i], arr)
-              } else {
-                break
-              }
+            if (res[i].end_time && today < Date.parse(res[i].end_time)) {
+              registerEvent(ids, res[i], arr)
             } else {
               break
             }
