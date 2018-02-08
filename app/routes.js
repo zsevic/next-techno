@@ -4,7 +4,7 @@ const Page = require('./models/page')
 const nextTechno = require('../nextTechno')
 
 module.exports = (app, passport) => {
-  app.get('/', (req, res, next) => {
+  app.get('/', (req, res) => {
     res.render('index.ejs')
   })
 
@@ -30,7 +30,7 @@ module.exports = (app, passport) => {
           result.sort((a, b) => {
             return (new Date(a.start_time)) - (new Date(b.start_time))
           })
-          res.render('events.ejs', { user: req.user, result })
+          res.render('events.ejs', { user, result })
         })
       } catch (e) {
         res.status(500).end()
@@ -41,7 +41,7 @@ module.exports = (app, passport) => {
         const result = events.sort((a, b) => {
           return (new Date(a.start_time)) - (new Date(b.start_time))
         })
-        res.render('events.ejs', { user: req.user, result })
+        res.render('events.ejs', { user, result })
       } catch (e) {
         res.status(500).end()
       }
