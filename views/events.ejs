@@ -18,13 +18,13 @@
 		</div>
 	</header>
 	<section class="card-columns items">
-		<% for(var i=0;i<result.length;i++){
-			var datetime=new Date(Date.parse(result[i].start_time));
-			var year=datetime.getFullYear();
-			var month=datetime.getMonth()+1;
-			var day=datetime.getDate();
-            var hours= datetime.getHours()==24 ? 0 : datetime.getHours()
-			var minutes=datetime.getMinutes();
+		<% for(let i=0; i < result.length; i++){
+			let datetime = new Date(Date.parse(result[i].start_time))
+			let year = datetime.getFullYear()
+			let month = datetime.getMonth() + 1
+			let day = datetime.getDate()
+            let hours = datetime.getHours() + 1 == 24 ? 0 : datetime.getHours() + 1
+			let minutes = datetime.getMinutes()
 		 %>
 			<div class="card">
 				<div class="card-block">
