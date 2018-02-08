@@ -2,7 +2,7 @@ const FacebookStrategy = require('passport-facebook').Strategy
 const User = require('../app/models/user')
 const configAuth = require('./auth')
 
-module.exports = (passport) => {
+module.exports = passport => {
   passport.use(new FacebookStrategy({
     clientID: configAuth.facebookAuth.clientID,
     clientSecret: configAuth.facebookAuth.clientSecret,

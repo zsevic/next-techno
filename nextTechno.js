@@ -63,7 +63,7 @@ module.exports = (pages, token, done) => {
       }
     })
   }
-  async.each(pages, giveMeData, (err) => {
+  async.each(pages, giveMeData, err => {
     if (err) { done(err) }
     done(null, arr)
     console.log('everything went okay!')
