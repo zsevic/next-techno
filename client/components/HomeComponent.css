@@ -1,0 +1,58 @@
+body {
+  overflow-x: hidden;
+  width: 100%;
+  color: #aaa;
+  font-size: 18px;
+  line-height: 1.4;
+  font-family: "Inconsolata", sans-serif;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  padding-left: 6%;
+  padding-right: 6%;
+  display: table;
+}
+.overlay__inner {
+  width: 100%;
+  height: auto;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.overlay h2 {
+  max-width: 40em;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  font-family: "Raleway", sans-serif;
+  line-height: 1.3;
+  margin: 0 auto;
+}
+.overlay p {
+  padding-top: 1em;
+  max-width: 40em;
+  margin: 0 auto;
+}
+.overlay a.btn {
+  display: inline-block;
+  margin-top: 25px;
+  border: 1px solid #00c1bb;
+  color: #00c1bb;
+  text-decoration: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+}
