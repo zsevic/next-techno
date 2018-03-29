@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import "bootstrap";
 import "./HomeComponent.css";
@@ -6,15 +7,22 @@ import "./HomeComponent.css";
 export default class HomeComponent extends Component {
   render() {
     return (
-      <div className="overlay">
+      <div className="overlay container">
         <div className="overlay__inner">
           <h2>
             <span className="fa fa-volume-up" /> Nextechno
           </h2>
           <p>Upcoming techno events in Belgrade</p>
-          <a href="/auth/facebook" className="btn">
+          <Link to="events">
+            <a className="btn">
+              <span className="row1">
+                <span className="fa fa-play" /> Find events
+              </span>
+            </a>
+          </Link>
+          <a className="btn" href="/auth/logout">
             <span className="row1">
-              <span className="fa fa-facebook" /> Connect with Facebook
+              <span className="fa fa-sign-out" /> Logout
             </span>
           </a>
         </div>
