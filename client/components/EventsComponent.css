@@ -2,11 +2,23 @@ a {
   color: white;
 }
 
+a:hover {
+  color: darkblue;
+}
+
 .events {
   opacity: 0.75;
 }
 
 .jumbo {
-  margin-top: 8px;
   opacity: 0.7;
+}
+
+.inner {
+  word-wrap: break-word;
+}
+
+.items {
+  margin-left: auto;
+  margin-right: auto;
 }

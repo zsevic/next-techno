@@ -29,15 +29,13 @@ export default class EventsComponent extends Component {
         let month = datetime.getMonth() + 1
         let year = datetime.getFullYear()
 
-        events.innerHTML += `<div class="card text-white bg-info mb-3 col-xs-12">
-        <div class="card-header">
+        events.innerHTML += `<div class="card text-white bg-info mb-3 col-xs-12 col-sm-5 items">
+        <div className="card-body inner">
         <p><strong>event</strong>:
         <a href="https://facebook.com/events/${
   event.eventId
 }" class="card-text">${event.name}</a>
         </p>
-        </div>
-        <div class="card-body">
           <p class="card-text">
             <strong>place</strong>:
             ${event.place}
@@ -71,7 +69,9 @@ export default class EventsComponent extends Component {
           </a>
         </div>
 
-        <div className='events card-columns' />
+        <div className='container'>
+          <div className='events row align-center' />
+        </div>
       </div>
     )
   }
