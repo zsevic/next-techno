@@ -12,10 +12,10 @@ See demo: [https://nextechno.herokuapp.com](https://nextechno.herokuapp.com)
 ### Setup
 
 * set environment variables inside `.env`
-* `npm install`
+* `yarn`
 * `mongod`
 * `npm run dev`
 
 ### Technologies used
 
-* Node.js, Express.js, MongoDB
+* React, Node.js, Express.js, MongoDB
