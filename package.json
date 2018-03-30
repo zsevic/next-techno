@@ -7,10 +7,10 @@
   "scripts": {
     "webpack-watch": "webpack -d --watch",
     "express-server": "nodemon server",
-    "dev":
-      "concurrently --kill-others \"npm run webpack-watch\" \"npm run express-server\"",
+    "dev": "concurrently --kill-others \"npm run webpack-watch\" \"npm run express-server\"",
     "start": "node server",
     "build:client": "webpack -p --progress",
+    "postinstall": "npm run build",
     "build": "better-npm-run build",
     "clean": "rimraf dist/*",
     "test": "standard"
