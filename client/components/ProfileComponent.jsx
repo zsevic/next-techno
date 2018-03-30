@@ -7,7 +7,7 @@ import './HomeComponent.css'
 export default class ProfileComponent extends Component {
   render () {
     return (
-      <div className='overlay container'>
+      <div className='overlay'>
         <div className='overlay__inner'>
           <h2>
             <span className='fa fa-volume-up' /> Nextechno

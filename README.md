@@ -14,7 +14,7 @@ See demo: [https://nextechno.herokuapp.com](https://nextechno.herokuapp.com)
 * set environment variables inside `.env`
 * `npm install`
 * `mongod`
-* `node server.js`
+* `npm run dev`
 
 ### Technologies used
 

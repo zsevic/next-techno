@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const eventSchema = mongoose.Schema({
   eventId: String,
-  event: String,
+  name: String,
   place: String,
   start_time: String
 })

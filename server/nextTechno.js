@@ -6,7 +6,7 @@ function registerEvent (ids, res, arr) {
   ids.push(res.id)
   let temp = {
     eventId: res.id,
-    event: res.name,
+    name: res.name,
     place: res.place === undefined ? 'N/A' : res.place.name,
     start_time: res.start_time
   }
