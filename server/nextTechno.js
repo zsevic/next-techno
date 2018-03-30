@@ -1,4 +1,4 @@
-const Event = require('./app/models/event')
+const Event = require('./api/event/event.model')
 const async = require('async')
 const request = require('request')
 
@@ -37,7 +37,9 @@ module.exports = (pages, token, done) => {
   const arr = []
   const ids = []
   let giveMeData = (page, cb) => {
-    let access = `https://graph.facebook.com/v2.9/${page.id}/events?access_token=${token}`
+    let access = `https://graph.facebook.com/v2.10/${
+      page.id
+    }/events?access_token=${token}`
     request(access, (error, response, body) => {
       if (!error && response.statusCode === 200) {
         const res = JSON.parse(body).data
@@ -64,7 +66,9 @@ module.exports = (pages, token, done) => {
     })
   }
   async.each(pages, giveMeData, err => {
-    if (err) { done(err) }
+    if (err) {
+      done(err)
+    }
     done(null, arr)
     console.log('everything went okay!')
   })
