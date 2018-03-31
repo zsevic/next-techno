@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import moment from 'moment-timezone'
 import 'bootstrap'
 import './HomeComponent.css'
 import './EventsComponent.css'
@@ -22,9 +23,11 @@ export default class EventsComponent extends Component {
 
       this.state.events.forEach((event, index) => {
         let datetime = new Date(Date.parse(event.start_time))
+        datetime = moment(datetime).tz('Europe/Belgrade')
+        datetime = new Date(Date.parse(datetime))
+
         let minutes = datetime.getMinutes()
-        let hours =
-          datetime.getHours() + 1 === 24 ? 0 : datetime.getHours() + 1
+        let hours = datetime.getHours()
         let day = datetime.getDate()
         let month = datetime.getMonth() + 1
         let year = datetime.getFullYear()
