@@ -1,21 +1,23 @@
-# Nextechno
+# nextechno
 
-An app that shows upcoming techno events in Belgrade
+> An app that shows upcoming techno events in Belgrade
+
+### :rocket: Demo
 
 See demo: [https://nextechno.herokuapp.com](https://nextechno.herokuapp.com)
 
-### Usage
+### :arrow_right: Usage
 
 * As an unauthenticated user, I can login with Facebook
 * As an authenticated user, I can see the list of techno events that will be held in Belgrade
 
-### Setup
+### :wrench: Setup
 
 * set environment variables inside `.env`
 * `yarn`
 * `mongod`
 * `npm run dev`
 
-### Technologies used
+### :package: Technologies used
 
 * React, Node.js, Express.js, MongoDB
