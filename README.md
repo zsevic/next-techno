@@ -1,3 +1,7 @@
+# :wastebasket: DEPRECATED DUE TO CHANGES IN GRAPH API
+
+---
+
 # nextechno
 
 > An app that shows upcoming techno events in Belgrade
